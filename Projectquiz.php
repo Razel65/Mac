@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kennisquiz</title>
     <link rel="stylesheet" href="projectquiz.css">
-</head>
+</head> 
 <body>
     <div id="quiz-container">
         <div id="timer">10</div>
