@@ -74,6 +74,10 @@ if ($action === 'login') {
 } else {
     echo json_encode(['success' => false, 'error' => 'Ongeldige actie']);
 }
+$host = "localhost";
+$user = "root"; 
+$password = ""; 
+$database = "quiz";
 
 $conn->close();
 ?>
