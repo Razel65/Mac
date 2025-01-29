@@ -90,33 +90,32 @@ function loadQuestion() {
     if (currentQuestionIndex < questions.length) {
         const question = questions[currentQuestionIndex];
         document.getElementById("question").innerText = question.question;
-        document.getElementById("optionA").innerText = question.answers[0];
-        document.getElementById("optionB").innerText = question.answers[1];
-        document.getElementById("optionC").innerText = question.answers[2];
+        const options = document.querySelectorAll(".option");
+        options.forEach((option, index) => {
+            option.innerText = question.answers[index];
+        });
+        
         enableOptions();
         startTimer();
     } else {
         endQuiz();
     }
 }
-
 function startTimer() {
     timeLeft = 10;
     document.getElementById("timer").innerText = timeLeft;
     timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timer").innerText = timeLeft;
         if (timeLeft <= 0) {
             clearInterval(timer);
-            disableOptions();
             currentQuestionIndex++;
-            setTimeout(() => {
-                loadQuestion();
-                enableOptions();
-            }, 1000); 
+            loadQuestion();
+        } else {
+            timeLeft--;
+            document.getElementById("timer").innerText = timeLeft;
         }
     }, 1000);
 }
+
 
 function disableOptions() {
     document.querySelectorAll(".option").forEach((button) => {
