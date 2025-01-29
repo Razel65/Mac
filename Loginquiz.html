@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="projectquiz.css">
+</head>
+<body>
+  <div id="login-container">
+    <form id="login-form">
+        <label for="username">Gebruikersnaam:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Wachtwoord:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <div id="error-message" style="color: red; display: none;"></div> <!-- Error message -->
+        <button type="button" id="login-button">Inloggen</button>
+        <button id="register-popup-button">Registreren</button>
+<div id="register-container" style="display:none;">
+    <form id="register-form">
+        <label for="reg-username">Gebruikersnaam:</label>
+        <input type="text" id="reg-username" name="username"><br><br>
+        <label for="reg-password">Wachtwoord:</label>
+        <input type="password" id="reg-password" name="password"><br><br>
+        <button type="button" id="register-button">Registreren</button>
+
+    </form>
+</div>
+
+      
+      <div class="form-group">
+        <label for="password">Wachtwoord:</label>
+        <input type="password" id="password" name="password" required aria-describedby="password-help">
+        <small id="password-help" class="help-text">Voer je wachtwoord in.</small>
+      </div>
+      
+      <button type="submit" id="login-button">Inloggen</button>
+    </form>
+    <p id="error-message" class="error" aria-live="polite" style="display:none;">Onjuiste gebruikersnaam of wachtwoord!</p>
+  </main>
+
+
+  <script src="loginquizz.js"></script>
+  <script src="login.js"></script>
+  <script src="Quizzz.js"></script>
+</body>
+</html>
