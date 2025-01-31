@@ -3,43 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Login & Registratie</title>
   <link rel="stylesheet" href="projectquiz.css">
 </head>
 <body>
+
   <div id="login-container">
+    <h2>Inloggen</h2>
     <form id="login-form">
-        <label for="username">Gebruikersnaam:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Wachtwoord:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <label for="login-username">Gebruikersnaam:</label>
+        <input type="text" id="login-username" required><br><br>
+
+        <label for="login-password">Wachtwoord:</label>
+        <input type="password" id="login-password" required><br><br>
+
         <div id="error-message" style="color: red; display: none;"></div> 
         <button type="button" id="login-button">Inloggen</button>
-        <button type="button" id="register-popup-button">Registreren</button>
+    </form>
+
+    <h2>Registreren</h2>
+    <form id="register-form">
+        <label for="register-username">Gebruikersnaam:</label>
+        <input type="text" id="register-username" required>
+
+        <label for="register-password">Wachtwoord:</label>
+        <input type="password" id="register-password" required>
+
+        <button type="submit" id="register-button">Registreren</button>
     </form>
   </div>
-  
-  <script src="loginquizz.js"></script>
+
+  <p id="message"></p>
 
   <script>
+    // LOGIN SCRIPT
     document.getElementById("login-button").addEventListener("click", async () => {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+      const username = document.getElementById("login-username").value;
+      const password = document.getElementById("login-password").value;
 
-          const response = await fetch('login_backend.php', {
+      const response = await fetch('login_backend.php', {
         method: 'POST',
         body: JSON.stringify({ username, password, action: 'login' }),
         headers: { 'Content-Type': 'application/json' }
       });
-      const data = await response.json();
 
+      const data = await response.json();
       if (data.success) {
         window.location.href = 'projectquiz.php';  
-           } else {
+      } else {
         document.getElementById("error-message").innerText = 'Onjuiste gebruikersnaam of wachtwoord';
         document.getElementById("error-message").style.display = 'block';
       }
     });
+
+    // REGISTRATIE SCRIPT
+    document.getElementById("register-form").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("register-username").value;
+      const password = document.getElementById("register-password").value;
+
+      const response = await fetch("register.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const result = await response.json();
+      document.getElementById("message").innerText = result.message;
+
+      if (result.success) {
+        window.location.href = "loginquiz.html"; 
+      }
+    });
   </script>
+
 </body>
 </html>
