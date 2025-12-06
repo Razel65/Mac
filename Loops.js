@@ -1,22 +1,8 @@
-// Count to ten!
+let cards = [7, 3, 9]
 
-// We need to specify...
+// Create a for loop that logs out all the cards in the array
+// Use cards.length to specify how long the loop should run
 
-// Where should we START counting?
-// Where is the FINISH line?
-// What's the STEP SIZE we should use?
-
-//    START           FINISH       STEP SIZE
-for ( let count = 10;  count < 21;  count += 1 )  {
-    
-    console.log(count)
-
-}
-
-
-
-for ( let i = 10;  i < 101;  i += 10 )  {
-    
-    console.log(i)
-
+for (let i = 0; i < cards.length; i ++){
+    console.log(cards(i))
 }
